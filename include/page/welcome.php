@@ -183,28 +183,6 @@ $ggt=$usermeta[0]->ggtolerance;
                         </div>
                     </div>
                 </div>
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-header">开发团队</div>
-                        <div class="layui-card-body ">
-                            <table class="layui-table">
-                                <tbody>
-                                    <tr>
-                                        <th>版权所有</th>
-                                        <td>xuebingsi(xuebingsi)
-                                            <a href="http://x.xuebingsi.com/" target="_blank">访问官网</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>开发者</th>
-                                        <td>马志斌(113664000@qq.com)</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <style id="welcome_style"></style>
-                <div class="layui-col-md12">
-                    <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote></div>
             </div>
         </div>
         </div>
