@@ -172,11 +172,11 @@ END;
 
                         };
                     } else {
-                        layer.msg(res.msg+"code："+res.code, {
-                            icon: 5,
+                        res.msg = res.msg +"<p>action：menu<br>code："+res.code+"</p>";
+                        layer.msg(res.msg, {
+                            icon: 2,
                             time: 3000,
                         });
-                        res.msg = res.msg +"code："+ res.code;
                         return res;
                         return false;
                     }
@@ -273,7 +273,7 @@ END;
                                             });
                                             layer.close(editlayer);
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code);
+                                            layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -385,7 +385,7 @@ END;
                             form.render('checkbox');
                             layer.msg(data.msg);
                         }else{
-                            layer.alert(data.msg+"code："+data.code);
+                            layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
@@ -435,7 +435,7 @@ END;
                             layer.msg(data.msg);
                             treeTable.reloadData('test',{});
                         }else{
-                            layer.alert(data.msg+"code："+data.code);
+                            layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
@@ -579,7 +579,7 @@ END;
                                             });
                                             layer.close(editlayer);
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code);
+                                            layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -779,7 +779,7 @@ END;
                                             });
                                             layer.close(editlayer);
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code);
+                                            layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -952,7 +952,7 @@ END;
                                                 treeTable.reloadData('test', {});
                                                 layer.close(index);
                                             }else{
-                                                layer.alert(data.msg+"code："+data.code);
+                                                layer.alert(data.msg+"<p>action：menu<br>code："+data.code+"</p>",{icon: 2});
                                             }
                                         },
                                         error: function(xhr, textStatus, errorThrown) {

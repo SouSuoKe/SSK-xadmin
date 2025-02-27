@@ -111,7 +111,7 @@ END;
 ?>
 
                 }else{
-                    layer.alert(data.msg+"code："+data.code,{icon: 2});
+                    layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                 }
             }
         });
@@ -214,11 +214,12 @@ END;
 
                         };
                     } else {
-                        layer.msg(res.msg+"code："+res.code, {
-                            icon: 5,
+                        res.msg = res.msg +"<p>action：member<br>code："+res.code+"</p>";
+                        layer.msg(res.msg, {
+                            icon: 2,
                             time: 3000,
                         });
-                        res.msg = res.msg +"code："+ res.code;
+                        
                         return res;
                         return false;
                     }
@@ -322,7 +323,7 @@ END;
                                             });
                                             layer.close(adduserlayer);
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code,{icon: 2});
+                                            layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -476,7 +477,7 @@ END;
                                                 layer.close(index);
                                             });
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code);
+                                            layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -565,7 +566,7 @@ END;
                                                     layer.close(index);
                                                 });
                                             } else {
-                                                layer.alert(data.msg+"code："+data.code);
+                                                layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                                             }
                                         },
                                         error: function(xhr, textStatus, errorThrown) {
@@ -629,7 +630,7 @@ END;
                                                     layer.close(index);
                                                 });
                                             } else {
-                                                layer.alert(data.msg+"code："+data.code);
+                                                layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                                             }
                                         },
                                         error: function(xhr, textStatus, errorThrown) {
@@ -716,7 +717,7 @@ END;
                                                 }
                                                 // 检查是否需要跳转到上一页 结束
                                             } else {
-                                                layer.alert(data.msg+"code："+data.code);
+                                                layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
                                             }
                                         },
                                         error: function(xhr, textStatus, errorThrown) {

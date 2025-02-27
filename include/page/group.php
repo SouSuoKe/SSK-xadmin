@@ -128,11 +128,11 @@ END;
 
                     };
                 } else {
-                    layer.msg(res.msg+"code："+res.code, {
-                        icon: 5,
+                    res.msg = res.msg +"<p>action：group<br>code："+res.code+"</p>";
+                    layer.msg(res.msg, {
+                        icon: 2,
                         time: 3000,
                     });
-                    res.msg = res.msg +"code："+ res.code;
                     return res;
                     return false;
                 }
@@ -205,7 +205,7 @@ END;
                                             });
                                             layer.close(addgrouplayer);
                                         } else {
-                                            layer.alert(formredata.msg+"code："+formredata.code);
+                                            layer.alert(formredata.msg+"<p>action：group<br>code："+formredata.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {
@@ -471,7 +471,7 @@ END;
                                         });
                                         layer.close(editlayer);
                                     } else {
-                                        layer.alert(formredata.msg+"code："+formredata.code);
+                                        layer.alert(formredata.msg+"<p>action：group<br>code："+formredata.code+"</p>",{icon: 2});
                                     }
                                 },
                                 error: function(xhr, textStatus, errorThrown) {
@@ -754,7 +754,7 @@ END;
                                             }
                                             // 检查是否需要跳转到上一页 结束
                                         } else {
-                                            layer.alert(data.msg+"code："+data.code);
+                                            layer.alert(data.msg+"<p>action：group<br>code："+data.code+"</p>",{icon: 2});
                                         }
                                     },
                                     error: function(xhr, textStatus, errorThrown) {

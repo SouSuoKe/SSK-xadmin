@@ -135,7 +135,7 @@ print<<<END
                                                     xadmin.add_tab('修改密码', '?p=password', true);
                                                     $(window).attr('location', 'login.php');
                                                 } else {
-                                                    layer.alert(data.msg+"code："+data.code);
+                                                    layer.alert(data.msg+"<p>action：logout<br>code："+data.code+"</p>",{icon: 2});
                                                 }
                                             },
                                             error: function(xhr, textStatus, errorThrown) {
@@ -151,7 +151,7 @@ print<<<END
                                         });
                                     });
                                 } else {
-                                    layer.alert(data.msg+"code："+data.code);
+                                    layer.alert(data.msg+"<p>action：password<br>code："+data.code+"</p>",{icon: 2});
                                 }
                             },
                             error: function(xhr, textStatus, errorThrown) {
@@ -620,7 +620,7 @@ END;
                                 $(window).attr('location', 'login.php');
                             });
                         } else {
-                            layer.alert(data.msg+"code："+data.code);
+                            layer.alert(data.msg+"<p>action：logout<br>code："+data.code+"</p>",{icon: 2});
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {

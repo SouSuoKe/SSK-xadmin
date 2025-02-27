@@ -136,9 +136,7 @@ END;
                             parent.layer.close(index);
                         }); 
                     }else{
-                        layer.alert(data.msg+"code:"+data.code, {icon: 6},function(index) {
-                            layer.close(index);
-                        });
+                        layer.alert(data.msg+"<p>action：rebindGA<br>code："+data.code+"</p>",{icon: 2});
                     }
                     return false;
                 },

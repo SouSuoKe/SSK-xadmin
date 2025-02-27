@@ -181,7 +181,7 @@ END;
                                     $("#repass").val("");
                                 });
                             } else {
-                                layer.alert(data.msg+"code："+data.code);
+                                layer.alert(data.msg+"<p>action：password<br>code："+data.code+"</p>",{icon: 2});
                             }
                         },
                         error: function(xhr, textStatus, errorThrown) {
@@ -257,7 +257,7 @@ END;
                                     layer.close(index);
                                 });
                             } else {
-                                layer.alert(data.msg+"code："+data.code);
+                                layer.alert(data.msg+"<p>action：saveggt<br>code："+data.code+"</p>",{icon: 2});
                             }
                         },
                         error: function(xhr, textStatus, errorThrown) {
