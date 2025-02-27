@@ -4,6 +4,7 @@
 sequenceDiagram
 participant A as 客户端
 participant B as 服务端
+loop 定时循环以刷新AES密钥
 A->>A: 生成AES密钥（KEY、IV）并储存在Local storage中
 A->>B: 访问RSA密钥对生成接口
 B->>B: 生成RSA公钥、私钥并储存在Session中
@@ -11,7 +12,7 @@ B-->>A: 返回RSA公钥
 A->>A: 使用RSA公钥加密AES密钥
 A->>B: 发送加密后的密钥
 B->>B: 使用RSA私钥解密AES密钥并储存在Session中
-A-->B: 定时（秒级）重复以上步骤更新AES密钥
+end
 A->>B: 使用AES密钥加密访问参数
 B->>B: 使用AES密钥解密访问参数<br>并加密返回数据
 B-->>A: 发送返回数据密文
