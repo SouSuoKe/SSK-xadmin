@@ -346,7 +346,7 @@ END;
                                     type: 2,
                                     area: ['720px', '580px'],
                                     title:'请选择图标',
-                                    content: '?p=menuchoosefontawesome',
+                                    content: '?p=fontawesomeformenu',
                                     fixed: false, // 不固定
                                     maxmin: true,
                                     shadeClose: true
@@ -652,7 +652,7 @@ END;
                                     type: 2,
                                     area: ['720px', '580px'],
                                     title:'请选择图标',
-                                    content: '?p=menuchoosefontawesome',
+                                    content: '?p=fontawesomeformenu',
                                     fixed: false,
                                     maxmin: true,
                                     shadeClose: true//,
@@ -853,7 +853,7 @@ END;
                                     type: 2,
                                     area: ['720px', '580px'],
                                     title:'请选择图标',
-                                    content: '?p=menuchoosefontawesome',
+                                    content: '?p=fontawesomeformenu',
                                     fixed: false,
                                     maxmin: true,
                                     shadeClose: true

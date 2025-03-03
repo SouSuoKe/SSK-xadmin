@@ -57,7 +57,7 @@ INSERT INTO `menu` VALUES (1, 0, 0, 'fa-solid fa-gear', '系统管理', 0, '');
 INSERT INTO `menu` VALUES (2, 1, 0, 'fa-solid fa-list', '菜单管理', 1, '?p=menu');
 INSERT INTO `menu` VALUES (3, 1, 1, 'fa-solid fa-users-gear', '用户组管理', 1, '?p=group');
 INSERT INTO `menu` VALUES (4, 1, 2, 'fa-solid fa-user-gear', '用户管理', 1, '?p=member');
-INSERT INTO `menu` VALUES (5, 1, 3, 'fa-brands fa-git-alt', '图标', 1, '?p=menuchoosefontawesome');
+INSERT INTO `menu` VALUES (5, 1, 3, 'fa-brands fa-git-alt', '图标', 1, '?p=fontawesomeformenu');
 
 -- ----------------------------
 -- Table structure for user
@@ -78,6 +78,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, '800001', '搜索客', '111111', 1, '', '', 1);
+INSERT INTO `user` VALUES (1, 'admin', 'admin', '111111', 1, '', '', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
