@@ -146,38 +146,33 @@ $ggt=$usermeta[0]->ggtolerance;
                             <table class="layui-table">
                                 <tbody>
                                     <tr>
-                                        <th>xxx版本</th>
-                                        <td>1.0.180420</td></tr>
+                                        <th>版本</th>
+                                        <td>1.X.X</td>
+                                    </tr>
                                     <tr>
-                                        <th>服务器地址</th>
-                                        <td>x.xuebingsi.com</td></tr>
+                                        <th>使用说明</th>
+                                        <td><a target="_blank" href="说明书.pdf">说明书.pdf</a></td>
+                                    </tr>
                                     <tr>
-                                        <th>操作系统</th>
-                                        <td>WINNT</td></tr>
+                                        <th>交流群</th>
+                                        <td><a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=UsnJVf1m5AvRewYrlrvSYBWny5BFqFXF&jump_from=webapi&authKey=0GP4QQ1exvkbxPTsTWVtlgsQbEpYp163tlV9K4ktjn/wjGxuGYZvfvqu/To0fXvL"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="加入QQ群：我的那些事" title="加入QQ群：我的那些事"></a></td>
+                                    </tr>
                                     <tr>
-                                        <th>运行环境</th>
-                                        <td>Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9</td></tr>
+                                        <th>网址</th>
+                                        <td><a target="_blank" href="https://ssk.wiki/">https://ssk.wiki/</a></td>
+                                    </tr>
                                     <tr>
                                         <th>PHP版本</th>
-                                        <td>5.6.27</td></tr>
+                                        <td>7.4.9</td>
+                                    </tr>
                                     <tr>
-                                        <th>PHP运行方式</th>
-                                        <td>cgi-fcgi</td></tr>
+                                        <th>扩展</th>
+                                        <td>OpenSSL</td>
+                                    </tr>
                                     <tr>
                                         <th>MYSQL版本</th>
-                                        <td>5.5.53</td></tr>
-                                    <tr>
-                                        <th>ThinkPHP</th>
-                                        <td>5.0.18</td></tr>
-                                    <tr>
-                                        <th>上传附件限制</th>
-                                        <td>2M</td></tr>
-                                    <tr>
-                                        <th>执行时间限制</th>
-                                        <td>30s</td></tr>
-                                    <tr>
-                                        <th>剩余空间</th>
-                                        <td>86015.2M</td></tr>
+                                        <td>8.0</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
