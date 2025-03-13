@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80021
  Source Host           : localhost:3306
- Source Schema         : xadmin_rel
+ Source Schema         : ssk-xadmin
 
  Target Server Type    : MySQL
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 18/11/2024 14:53:20
+ Date: 13/03/2025 15:17:50
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `group`  (
   `menuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'all：所有，0：全部不可见，1|2|3：对应可见menuid',
   `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '说明',
   PRIMARY KEY (`gid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of group
@@ -48,16 +48,17 @@ CREATE TABLE `menu`  (
   `refresh` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '0：在tab打开；\r\n1：在tab打开并刷新；',
   `href` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '为空则href默认为 javascript:;',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES (1, 0, 0, 'fa-solid fa-gear', '系统管理', 0, '');
+INSERT INTO `menu` VALUES (1, 0, 1, 'fa-solid fa-gear', '系统管理', 0, '');
 INSERT INTO `menu` VALUES (2, 1, 0, 'fa-solid fa-list', '菜单管理', 1, '?p=menu');
 INSERT INTO `menu` VALUES (3, 1, 1, 'fa-solid fa-users-gear', '用户组管理', 1, '?p=group');
 INSERT INTO `menu` VALUES (4, 1, 2, 'fa-solid fa-user-gear', '用户管理', 1, '?p=member');
 INSERT INTO `menu` VALUES (5, 1, 3, 'fa-brands fa-git-alt', '图标', 1, '?p=fontawesomeformenu');
+INSERT INTO `menu` VALUES (6, 0, 0, 'fa-solid fa-pen-to-square', '【重要】使用示例【必看】', 1, '?p=example');
 
 -- ----------------------------
 -- Table structure for user
@@ -73,7 +74,7 @@ CREATE TABLE `user`  (
   `ggsecret` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `ggtolerance` tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '谷歌秘钥过期时间=ggtolerance×30秒',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
