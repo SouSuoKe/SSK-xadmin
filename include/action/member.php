@@ -48,9 +48,10 @@ if($usermeta[0]->groupid==="1"){
             $result=array(
                 "code"=>0,
                 "msg"=>"成功！",
-                "count" => $totalRows, // 返回总记录数
-                //'totalPages' => $totalPages, // 返回总页数
-                "data"=>$userlist
+                "data"=>$userlist,
+                "other"=>array(
+                    "count"=>$totalRows
+                )
             );
         }elseif($method==="getgroupinfo"){
             $groups=array();

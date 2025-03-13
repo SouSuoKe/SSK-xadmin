@@ -40,14 +40,10 @@ if(isset($_SESSION["userid"]) && $_SESSION["userid"]!=""){
     );
 }
 
-if(array_key_exists("count", $result)){
-    $others[]=array(
-        "count",
-        $result["count"]
-    );
+if(array_key_exists("other", $result)){
+    //
 }else{
-    $others="";
+    $result["other"]=array();
 }
-
-returnresult($result["code"],$result["msg"],$result["data"],$others);
+returnresult($result["code"],$result["msg"],$result["data"],$result["other"]);
 ?>

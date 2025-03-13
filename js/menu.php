@@ -5,6 +5,8 @@ $menu=array(
     "msg"=>"状态异常！",
     "data"=>""
 );
+$other_results=array();
+
 if ($_SESSION["userid"]) {
     $userid = $_SESSION["userid"];
     $usermeta=$db->get_results("SELECT * FROM `user` WHERE `id` = '{$userid}' AND `groupid` <> '2'");
@@ -133,4 +135,4 @@ if ($_SESSION["userid"]) {
         "data"=>""
     );
 }
-returnresult($menu["code"],$menu["msg"],$menu["data"],$others="");
+returnresult($menu["code"],$menu["msg"],$menu["data"],$other_results);

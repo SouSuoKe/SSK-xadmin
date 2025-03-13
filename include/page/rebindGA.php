@@ -17,10 +17,12 @@ if(!defined('IN_SSK_XADMIN')) {
 
         $sitename=urlencode($username."@".$website_name);
         
+        $enc_data=httpencrypt("otpauth://totp/".$sitename."?secret=".$secret);
+        $qrdata=$enc_data["data"];
         if($http_encrypt){
-            $qrdata=httpencrypt("otpauth://totp/".$sitename."?secret=".$secret)["data"];
+            $aesgentime=$enc_data["time"];
         }else{
-            $qrdata="otpauth://totp/".$sitename."?secret=".$secret;
+            
         }
         
     }else{
@@ -160,14 +162,13 @@ END;
                 height: 210,
 <?php
 if($http_encrypt){
-    $aesgentime=$_SESSION["aesgentime"];
 print<<<END
                 text: ssk_decrypt("{$qrdata}", "{$aesgentime}")
 END;
 }else{
     $qrdata=json_encode($qrdata);
 print<<<END
-                text: "{$qrdata}"
+                text: {$qrdata}
 END;
 }
 ?>

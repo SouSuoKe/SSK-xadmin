@@ -57,7 +57,9 @@ function httpencrypt($mingwen){
             "data"=>$endata
         );
     }else{
-        $data = $mingwen;
+        $data = array(
+            "data"=>$mingwen
+        );
     }
     return $data;
 }
@@ -79,19 +81,23 @@ function httpdecrypt($miwen){
  * @param string $code 状态码
  * @param string $msg 返回信息
  * @param string $data 返回数据
- * @param array $others 其他需要加入$result中的数据，如count等，
- * $others=array(
- *     array(
- *         "key1",
- *         "value1"
- *     ),
- *     array(
- *         "key2",
- *         "value2"
- *     )
- * );
+ * @param array $other_results 为除 $code、$msg、$data 外，其他需要加入$result中的【不可加密的】数据，
+ * 如layui数据表格需要的count（总条数）等其他数据，
+ * 
+ *      $result=array(
+ *          "code"=>0,
+ *          "msg"=>"成功！",
+ *          "data"=>$userlist,      //加密数据
+ *          "other"=>array(         //不加密数据
+ *              "count"=>$totalRows,  //如 action/group.php，action/member.php
+ *              "key1"=>"value1",
+ *              "key2"=>"value2"
+ *          )
+ *      );
+ * 
+ * 
  */
-function returnresult($code,$msg,$data,$others){
+function returnresult($code,$msg,$data,$other_results){
     global $http_encrypt;
     if($http_encrypt){
         $data=httpencrypt(json_encode($data));
@@ -108,9 +114,9 @@ function returnresult($code,$msg,$data,$others){
             "data"=>$data
         );
     }
-    if($others){
-        for($i=0;$i<count($others);$i++){
-            $result[$others[$i][0]]=$others[$i][1];
+    if(count($other_results)>0){
+        foreach($other_results as $key=>$value){
+            $result[$key]=$value;
         }
     }else{
         //

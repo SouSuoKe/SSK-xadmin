@@ -20,14 +20,15 @@ if($usermeta[0]->groupid==="1"){
                 $result=array(
                     "code"=>0,
                     "msg"=>"成功！",
-                    "count"=>$totalRows,
-                    "data"=>$groups
+                    "data"=>$groups,
+                    "other"=>array(
+                        "count"=>$totalRows
+                    )
                 );
             }else{
                 $result=array(
                     "code"=>7,
                     "msg"=>"读取数据异常！",
-                    "count"=>"",
                     "data"=>""
                 );
             }
@@ -115,8 +116,7 @@ if($usermeta[0]->groupid==="1"){
             "msg"=>"参数异常！",
             "data"=>""
         );
-
-            }
+    }
 }else{
     //非管理员
     $result=array(
