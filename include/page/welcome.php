@@ -36,6 +36,7 @@ $ggt=$usermeta[0]->ggtolerance;
                         </div>
                     </div>
                 </div>
+<!--
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-header">数据统计</div>
@@ -139,9 +140,10 @@ $ggt=$usermeta[0]->ggtolerance;
                         </div>
                     </div>
                 </div>
+-->
                 <div class="layui-col-md12">
                     <div class="layui-card">
-                        <div class="layui-card-header">系统信息</div>
+                        <div class="layui-card-header">系统说明</div>
                         <div class="layui-card-body ">
                             <table class="layui-table">
                                 <tbody>
