@@ -27,7 +27,16 @@ $ggt=$usermeta[0]->ggtolerance;
         <![endif]-->
     </head>
     
-    <body class="layui-bg-gray">
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a><cite>修改密码</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
         <div style="padding: 16px;">
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md6">
