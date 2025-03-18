@@ -229,12 +229,20 @@ if($usermeta[0]->groupid==="1"){
                         "data"=>""
                     );
                 }else{
-                    if($db->query("INSERT INTO `user` (`gph`, `username`, `groupid`, `extgroupids`) VALUES ('$gph', '$username', '$groupid', '$extgroupids_str')")===false){
-                        $result=array(
-                            "code"=>13,
-                            "msg"=>"添加失败！",
-                            "data"=>""
-                        );
+                    if(@$db->query("INSERT INTO `user` (`gph`, `username`, `groupid`, `extgroupids`) VALUES ('$gph', '$username', '$groupid', '$extgroupids_str')")===false){
+                        if($db->last_error==="Duplicate entry '".$username."' for key 'user.idx_username'"){
+                            $result=array(
+                                "code"=>19,
+                                "msg"=>"添加失败！用户名重复！",
+                                "data"=>""
+                            );
+                        }else{
+                            $result=array(
+                                "code"=>13,
+                                "msg"=>"添加失败！",
+                                "data"=>""
+                            );
+                        }
                     }else{
                         $result=array(
                             "code"=>0,
