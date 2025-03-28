@@ -96,24 +96,6 @@ END;
         var form = layui.form,
         layer = layui.layer;
 
-        form.on('submit(savepwd)',
-        function(data) {
-            console.log(data);
-            layer.alert("密码修改成功", {icon: 6},function(index) {
-                layer.close(index);
-            });
-            return false;
-        });
-
-        form.on('submit(saveggtolerance)',
-        function(data) {
-            console.log(data);
-            layer.alert("有效时长修改成功", {icon: 6},function(index) {
-                layer.close(index);
-            });
-            return false;
-        });
-
         form.on('submit(updateggauth)',
         function(data) {
             $.ajax({

@@ -6,6 +6,7 @@ if(!defined('IN_SSK_XADMIN')) {
 $username=$usermeta[0]->username;
 $datetime=date("Y-m-d H:i:s",time());
 $ggt=$usermeta[0]->ggtolerance;
+$tfa=$usermeta[0]->tfa;
 ?>
 
 <!DOCTYPE html>
@@ -113,6 +114,28 @@ $ggt=$usermeta[0]->ggtolerance;
                         </div>
                     </div>
                 </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">2FA双因素验证</div>
+                        <div class="layui-card-body">
+                            <form class="layui-form">
+                                <div class="layui-form-item">
+                                    <label for="logintfa" class="layui-form-label">登录验证方式</label>
+                                    <div class="layui-input-inline" style="width:130px;">
+                                        <select name="logintfa" id="logintfa" lay-verify="">
+                                            <option value="1">仅验证密码</option>
+                                            <option value="2">仅验证动态密码</option>
+                                            <option value="3">密码或动态密码 只验证其中一种</option>
+                                            <option value="4">2FA双因素 两种都需要验证</option>
+                                        </select>
+                                    </div>
+                                    <button class="layui-btn" style="float:left;margin-right:10px;" lay-filter="savelogintfa" lay-submit="">确认</button>
+                                    <div class="layui-input-inline" style="width: auto;line-height: 30px;">除“仅验证密码”外，其他方式需要先绑定动态密码</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -135,6 +158,7 @@ END;
         <script type="text/javascript" src="./js/jquery.qrcode.min.js"></script>
         <script>
         $('#ggt').val('<?php echo $ggt; ?>');
+        $('#logintfa').val('<?php echo $tfa; ?>');
 
         layui.use(['form', 'layer'],
             function() {
@@ -167,7 +191,7 @@ END;
                     console.log(data);
                     var pwddata='{"newpass":"'+$("#newpass").val()+'","repass":"'+$("#repass").val()+'"}';
                     $.ajax({
-                        url: 'action.php?a=password',
+                        url: 'action.php?a=password&method=setpwd',
                         type: 'post',
 <?php
 if($http_encrypt){
@@ -245,7 +269,7 @@ END;
                     console.log("data.field.ggt="+data.field.ggt);
                     var ggtdata='{"ggt":"'+data.field.ggt+'"}';
                     $.ajax({
-                        url: 'action.php?a=saveggt',
+                        url: 'action.php?a=password&method=saveggt',
                         type: 'post',
 <?php
 if($http_encrypt){
@@ -262,11 +286,11 @@ END;
                         success: function(data) {
                             console.log(data);
                             if (data.code === 0) {
-                                layer.alert("有效时长修改成功！", {icon: 6},function(index) {
+                                layer.alert(data.msg, {icon: 6},function(index) {
                                     layer.close(index);
                                 });
                             } else {
-                                layer.alert(data.msg+"<p>action：saveggt<br>code："+data.code+"</p>",{icon: 2});
+                                layer.alert(data.msg+"<p>action：password<br>code："+data.code+"</p>",{icon: 2});
                             }
                         },
                         error: function(xhr, textStatus, errorThrown) {
@@ -300,6 +324,53 @@ END;
                     });
                     return false;
                 });
+
+
+                //双因素认证
+                form.on('submit(savelogintfa)',
+                function(data){
+                    console.log(data.field);
+                    console.log("data.field.logintfa="+data.field.logintfa);
+                    var logintfadata='{"logintfa":"'+data.field.logintfa+'"}';
+                    $.ajax({
+                        url: 'action.php?a=password&method=savelogintfa',
+                        type: 'post',
+<?php
+if($http_encrypt){
+print<<<END
+                        data: 'data='+ssk_encrypt(logintfadata),
+END;
+}else{
+print<<<END
+                        data: 'data='+logintfadata,
+END;
+}
+?>
+
+                        success: function(data) {
+                            console.log(data);
+                            if (data.code === 0) {
+                                layer.alert(data.msg, {icon: 6},function(index) {
+                                    layer.close(index);
+                                });
+                            } else {
+                                layer.alert(data.msg+"<p>action：password<br>code："+data.code+"</p>",{icon: 2});
+                            }
+                        },
+                        error: function(xhr, textStatus, errorThrown) {
+                            console.log("进入error---");
+                            console.log("状态码：" + xhr.status);
+                            console.log("状态:" + xhr.readyState); //当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+                            console.log("错误信息:" + xhr.statusText);
+                            console.log("返回响应信息：" + xhr.responseText);
+                            console.log("请求状态：" + textStatus);
+                            console.log(errorThrown);
+                            console.log("请求失败");
+                        }
+                    });
+                    return false;
+                });
+
             });
         </script>
     </body>

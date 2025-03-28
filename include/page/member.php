@@ -513,6 +513,9 @@ END;
                             title: '重置动态口令',
                             id: 'resetga'
                         },{
+                            title: '重置验证方式',
+                            id: 'resettfa'
+                        },{
                             title: '删除用户',
                             id: 'del'
                         }],
@@ -611,6 +614,70 @@ END;
                                 }, function(index){
                                     $.ajax({
                                         url: 'action.php?a=member&method=restga',
+                                        type: 'post',
+<?php
+if($http_encrypt){
+print<<<END
+                                        data: "data="+ssk_encrypt(data.id),
+END;
+}else{
+print<<<END
+                                        data: "data="+data.id,
+END;
+}
+?>
+
+                                        success: function(data) {
+                                            if (data.code === 0) {
+                                                layer.alert(data.msg, {time: 3000,icon: 6},function(index) {
+                                                    layer.close(index);
+                                                });
+                                            } else {
+                                                layer.alert(data.msg+"<p>action：member<br>code："+data.code+"</p>",{icon: 2});
+                                            }
+                                        },
+                                        error: function(xhr, textStatus, errorThrown) {
+                                            console.log("进入error---");
+                                            console.log("状态码：" + xhr.status);
+                                            console.log("状态:" + xhr.readyState); //当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+                                            console.log("错误信息:" + xhr.statusText);
+                                            console.log("返回响应信息：" + xhr.responseText);
+                                            console.log("请求状态：" + textStatus);
+                                            console.log(errorThrown);
+                                            console.log("请求失败");
+                                        }
+                                    });
+                                });
+                            } else if(menudata.id === 'resettfa'){
+                                layer.confirm(`
+                                    <form class="layui-form" id="delgroup">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label" style="width: auto;">工牌号</label>
+                                        <div class="layui-input-block" style="margin-left:66px;">
+                                            <input type="text" value="`+data.gph+`" class="layui-input" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label" style="width: auto;">用户名</label>
+                                        <div class="layui-input-block" style="margin-left:66px;">
+                                            <input type="text" value="`+data.username+`" class="layui-input" disabled>
+                                        </div>
+                                    </div>
+                                    </form>
+                                `,
+                                {
+                                    title: '重置验证方式：仅验证密码',
+                                    btn: ['重置', '取消'],
+                                    success: function(layero, index){
+                                        var btnrestga = layero.find('.layui-layer-btn0');
+                                        btnrestga.css({
+                                            'background-color': '#FF5722', // 设置按钮背景颜色
+                                            'color': 'white'              // 设置按钮文字颜色
+                                        });
+                                    }
+                                }, function(index){
+                                    $.ajax({
+                                        url: 'action.php?a=member&method=resttfa',
                                         type: 'post',
 <?php
 if($http_encrypt){

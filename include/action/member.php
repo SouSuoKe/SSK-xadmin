@@ -178,6 +178,37 @@ if($usermeta[0]->groupid==="1"){
                     "data"=>""
                 );
             }
+        }elseif($method==="resttfa"){
+            if(isset($_POST["data"]) && $_POST["data"]!==""){
+                $id=(int)json_decode(httpdecrypt($_POST["data"]),true);
+                if($db->query("UPDATE `user` SET `tfa`=1 WHERE id=$id")===false){
+                    if($db->query("SELECT * FROM `user` WHERE id='$id' AND `tfa`=1")===false){
+                        $result=array(
+                            "code"=>21,
+                            "msg"=>"验证方式重置失败！",
+                            "data"=>""
+                        );
+                    }else{
+                        $result=array(
+                            "code"=>0,
+                            "msg"=>"验证方式已重置为仅验证密码！",
+                            "data"=>""
+                        );
+                    }
+                }else{
+                    $result=array(
+                        "code"=>0,
+                        "msg"=>"验证方式已重置为仅验证密码！",
+                        "data"=>""
+                    );
+                }
+            }else{
+                $result=array(
+                    "code"=>20,
+                    "msg"=>"参数异常！",
+                    "data"=>""
+                );
+            }
         }elseif($method==="deluser"){
             if(isset($_POST["data"]) && $_POST["data"]!==""){
                 $id=(int)json_decode(httpdecrypt($_POST["data"]),true);

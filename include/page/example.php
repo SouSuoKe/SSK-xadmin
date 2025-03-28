@@ -289,7 +289,7 @@ END;
                     var pwddata='{"newpass":"'+$("#newpass").val()+'","repass":"'+$("#repass").val()+'"}';     //待传输数据
 
                     $.ajax({
-                        url: 'action.php?a=password',
+                        url: 'action.php?a=password&method=setpwd',
                         type: 'post',
 &lt;?php
 if($http_encrypt){

@@ -105,7 +105,7 @@ layui.use(function() {
                         console.log(JSON.stringify(field));
                         var pwddata='{"newpass":"'+$("#newpass").val()+'","repass":"'+$("#repass").val()+'"}';
                         $.ajax({
-                            url: 'action.php?a=password',
+                            url: 'action.php?a=password&method=setpwd',
                             type: 'post',
 
 END;

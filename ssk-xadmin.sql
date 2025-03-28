@@ -11,7 +11,7 @@
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 18/03/2025 15:16:57
+ Date: 27/03/2025 15:45:07
 */
 
 SET NAMES utf8mb4;
@@ -73,6 +73,7 @@ CREATE TABLE `user`  (
   `extgroupids` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '以“|”分隔',
   `ggsecret` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `ggtolerance` tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '谷歌秘钥过期时间=ggtolerance×30秒',
+  `tfa` tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '1：仅密码；\r\n2：仅动态密码；\r\n3：密码或动态密码 只验证其中一种；\r\n4：2FA双因素 两种都需要验证；',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `idx_gph`(`gph`) USING BTREE,
   UNIQUE INDEX `idx_username`(`username`) USING BTREE
@@ -81,6 +82,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'admin', 'admin', '111111', 1, '', '', 1);
+INSERT INTO `user` VALUES (1, 'admin', 'admin', '111111', 1, '', '', 1, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
